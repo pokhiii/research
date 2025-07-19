@@ -6,3 +6,4 @@ pit-paper/*.pdf
 *.fdb_latexmk
 *.fls
 *.log
+.DS_Store
