@@ -5,3 +5,4 @@ pit-paper/*.toc
 pit-paper/*.pdf
 *.fdb_latexmk
 *.fls
+*.log

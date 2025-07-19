@@ -19,6 +19,7 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: pit-paper/main.tex
+          output_directory: ./pit-paper
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -33,4 +34,4 @@ jobs:
           name: Latest PIT Paper
           files: pit-paper/main.pdf
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
