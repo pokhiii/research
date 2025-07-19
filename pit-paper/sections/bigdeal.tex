@@ -1,0 +1,23 @@
+\section{What’s the Big Deal?}
+
+Why should anyone care if a formula always gives zero?
+
+At first, it feels like a puzzle you'd find in a high school math class — a question about simplifying expressions. But hidden inside this question is a doorway to some of the deepest ideas in computer science.
+
+\subsection*{A Simple Question, A Powerful Problem}
+
+Checking whether a formula always gives zero is surprisingly tricky for computers — especially when the formula is large and complicated.
+
+Sure, you can try plugging in random numbers. If the result is zero every time, maybe the formula is always zero. But how do you \textit{know for sure}? What if there's one set of values, out of billions, that gives something other than zero?
+
+\subsection*{The Power of Randomness}
+
+In practice, computers often test formulas like this by choosing random values. It works well most of the time. This gives us what's called a \textit{randomized algorithm}: one that uses random choices to get the answer quickly and correctly \textit{with high probability}.
+
+But randomness isn't perfect. What if we want a guarantee — a way to check always, deterministically, with no room for doubt?
+
+That leads to a huge question in computer science:
+
+\begin{quote}
+Can every randomized algorithm be replaced by a reliable, step-by-step (deterministic) algorithm?
+\end{quote}

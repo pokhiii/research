@@ -1,0 +1,7 @@
+pit-paper/*.aux
+pit-paper/*.log
+pit-paper/*.out
+pit-paper/*.toc
+pit-paper/*.pdf
+*.fdb_latexmk
+*.fls

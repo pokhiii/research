@@ -1,0 +1,66 @@
+\section{The Basic Question: Always Zero?}
+
+
+\subsection*{What Does ``Always Equal to Zero'' Mean?}
+
+Take this formula:
+\[
+(x + y)^2 - x^2 - 2xy - y^2
+\]
+Let’s plug in some numbers and see what we get.
+
+\paragraph{Try 1 (x = 1, y = 2):}
+\begin{align*}
+(1 + 2)^2 - 1^2 - 2 \cdot 1 \cdot 2 - 2^2 &= 9 - 1 - 4 - 4 \\
+&= 0
+\end{align*}
+
+\paragraph{Try 2 (x = -3, y = 5):}
+\begin{align*}
+(-3 + 5)^2 - (-3)^2 - 2 \cdot (-3) \cdot 5 - 5^2 &= 4 - 9 + 30 - 25 \\
+&= 0
+\end{align*}
+
+\paragraph{Try 3 (x = 0, y = 0):}
+\[
+(0 + 0)^2 - 0^2 - 0 - 0 = 0
+\]
+
+No matter what numbers we choose, this big formula always gives $0$.
+
+\medskip
+This is what we mean when we say:
+
+\textbf{``The formula is always equal to zero.''}
+
+\subsection*{A Formula That’s Not Always Zero}
+
+Take this one:
+\[
+(x + y)^2 - x^2 - y^2
+\]
+
+Try plugging in:
+
+\paragraph{Try 1 (x = 1, y = 2):}
+\begin{align*}
+(1 + 2)^2 - 1^2 - 2^2 &= 9 - 1 - 4 \\
+&= 4
+\end{align*}
+
+\paragraph{Try 2 (x = 0, y = 0):}
+\[
+(0 + 0)^2 - 0^2 - 0^2 = 0
+\]
+
+\medskip
+Uh oh. Sometimes it’s $0$, sometimes not. So this formula is \textbf{not always zero}.
+
+\bigskip
+That’s what we’re testing in PIT:
+
+\begin{quote}
+\emph{Is this formula zero for all values of $x$ and $y$?}
+\end{quote}
+
+Even one counterexample is enough to say \textbf{No}.

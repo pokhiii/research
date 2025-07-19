@@ -1,0 +1,80 @@
+
+\section{Wait — How Can Random Guessing Work?}
+
+If you’ve followed along so far, you might be asking the obvious question:
+
+\begin{quote}
+How can a computer guess a few values and confidently say a formula is always zero?
+\end{quote}
+
+It sounds risky. After all, just because something works for 5 or 10 test cases doesn’t mean it works \textit{forever}, right?
+
+And yet — surprisingly — there’s a well-understood and mathematically proven way to make this work. It’s called the \textbf{randomized algorithm for Polynomial Identity Testing}.
+
+\subsection*{The Basic Idea}
+
+Suppose you’re given a formula involving variables — like $x$ and $y$ — and you're asked whether it \textit{always} gives zero.
+
+Here’s what the algorithm does:
+
+\begin{enumerate}
+  \item Pick random values for the variables (say $x = 3$, $y = 7$)
+  \item Plug them into the formula and compute the result
+  \item If the result is \textbf{not zero}, you can immediately say: the formula is \textbf{not} always zero
+  \item If it \textbf{is zero}, try again with more random values — maybe 10, 20, or 100 times
+\end{enumerate}
+
+If every result keeps coming out zero, the algorithm becomes more and more confident: this formula is probably always zero.
+
+\subsection*{Can Random Guessing Be Trusted?}
+
+Yes — and this is the clever part. Mathematicians have proven (using something called the \textit{Schwartz-Zippel Lemma}) that:
+
+\begin{quote}
+If a formula is not always zero, the chance that it \textit{accidentally} gives zero on random inputs is small — and gets smaller the more random values you try.
+\end{quote}
+
+That means:
+\begin{itemize}
+  \item If the formula is truly zero, it will always return zero — every time.
+  \item If it’s not zero, then testing it on a few random values will almost always catch it.
+\end{itemize}
+
+This makes the algorithm \textbf{probabilistically correct}. It might rarely make a mistake, but we can make the chance of error extremely small — less than 1 in a billion — just by repeating it a few times.
+
+\subsection*{What’s the Catch?}
+
+The catch is: this is still a \textit{randomized} algorithm.
+
+It doesn’t give a 100\% guarantee. And in computer science, sometimes “almost certain” isn’t good enough — we want step-by-step, predictable, deterministic algorithms that always give the right answer.
+
+\subsection*{Why This Matters}
+
+Here’s the connection to the bigger picture:
+
+\begin{itemize}
+  \item We have a fast randomized algorithm for PIT.
+  \item We don’t yet have a fast deterministic one.
+  \item If we can build a deterministic PIT algorithm, it could lead to big breakthroughs — like removing randomness from many other problems too.
+\end{itemize}
+
+In short, PIT is the perfect testing ground for understanding the power (and limitations) of random algorithms.
+
+
+
+\subsection*{Why PIT Is at the Center of It All}
+
+Polynomial Identity Testing is one of the simplest and most natural problems where we can explore that big question.
+
+If we find a way to check whether a formula is always zero \textit{without randomness}, we’d make progress toward removing randomness from many other algorithms too. This is called \textit{derandomization}.
+
+Even more exciting: solving PIT in a clever, deterministic way would help prove some of the biggest open questions in theoretical computer science — questions like whether every problem with short solutions (NP) can also be solved quickly (P).
+
+\subsection*{In Short}
+
+The humble question “Is this formula always zero?” connects:
+\begin{itemize}
+  \item High school algebra,
+  \item Cutting-edge computer science,
+  \item And the quest to understand the true power of computers.
+\end{itemize}
