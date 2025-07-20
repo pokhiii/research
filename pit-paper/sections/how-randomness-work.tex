@@ -31,7 +31,7 @@ If every result keeps coming out zero, the algorithm becomes more and more confi
 Yes — and this is the clever part. Mathematicians have proven (using something called the \textit{Schwartz-Zippel Lemma}) that:
 
 \begin{quote}
-If a formula is not always zero, the chance that it \textit{accidentally} gives zero on random inputs is small — and gets smaller the more random values you try.
+If a formula is not always zero, the chance that it \textit{accidentally} gives zero on random inputs is small — and gets smaller the more random values you try.\footnote{See \textit{Schwartz-Zippel Lemma} \cite{schwartz1980fast,zippel1979probabilistic}.}
 \end{quote}
 
 That means:
@@ -40,41 +40,80 @@ That means:
   \item If it’s not zero, then testing it on a few random values will almost always catch it.
 \end{itemize}
 
-This makes the algorithm \textbf{probabilistically correct}. It might rarely make a mistake, but we can make the chance of error extremely small — less than 1 in a billion — just by repeating it a few times.
-
-\subsection*{What’s the Catch?}
-
-The catch is: this is still a \textit{randomized} algorithm.
-
-It doesn’t give a 100\% guarantee. And in computer science, sometimes “almost certain” isn’t good enough — we want step-by-step, predictable, deterministic algorithms that always give the right answer.
-
-\subsection*{Why This Matters}
-
-Here’s the connection to the bigger picture:
+\paragraph{Example.}  
+Consider this formula:
+\[
+P(x) = (x - 3)^2
+\]
+It looks like a fancy polynomial, but it's actually only zero when $x = 3$.  
+If you randomly choose an integer between 1 and 100 and plug it in, there's only a $1/100$ chance of hitting $x = 3$. So:
 
 \begin{itemize}
-  \item We have a fast randomized algorithm for PIT.
-  \item We don’t yet have a fast deterministic one.
-  \item If we can build a deterministic PIT algorithm, it could lead to big breakthroughs — like removing randomness from many other problems too.
+  \item 99 times out of 100, this formula will return a nonzero value.
+  \item If it \textit{were} always zero, it would return 0 for \textit{every} value.
 \end{itemize}
 
-In short, PIT is the perfect testing ground for understanding the power (and limitations) of random algorithms.
+This is the key idea behind the randomized test: if we pick enough random values and always get zero, we're very likely dealing with an identically zero formula.
+
+\medskip
+This makes the algorithm \textbf{probabilistically correct}. It might rarely make a mistake, but we can make the chance of error extremely small — less than 1 in a billion — just by repeating it a few times with fresh random inputs.
 
 
+\subsection*{How Many Random Tests Are Enough?}
 
-\subsection*{Why PIT Is at the Center of It All}
+Now that we know the algorithm might make mistakes, the next obvious question is:
 
-Polynomial Identity Testing is one of the simplest and most natural problems where we can explore that big question.
+\begin{quote}
+How many random inputs should we test before we can be confident that the formula is really always zero?
+\end{quote}
 
-If we find a way to check whether a formula is always zero \textit{without randomness}, we’d make progress toward removing randomness from many other algorithms too. This is called \textit{derandomization}.
+This is where the \textit{Schwartz-Zippel Lemma} gives us a clear answer.
 
-Even more exciting: solving PIT in a clever, deterministic way would help prove some of the biggest open questions in theoretical computer science — questions like whether every problem with short solutions (NP) can also be solved quickly (P).
-
-\subsection*{In Short}
-
-The humble question “Is this formula always zero?” connects:
+Suppose:
 \begin{itemize}
-  \item High school algebra,
-  \item Cutting-edge computer science,
-  \item And the quest to understand the true power of computers.
+  \item $P(x_1, x_2, ..., x_n)$ is a polynomial that is \textbf{not} identically zero
+  \item Its total degree is $d$
+  \item You choose each variable’s value randomly from a finite set $S$ (say, $\{1, 2, ..., N\}$)
 \end{itemize}
+
+Then:
+\begin{quote}
+The probability that $P$ evaluates to zero at a randomly chosen input is at most $\dfrac{d}{N}$.
+\end{quote}
+
+\paragraph{What does this actually mean?}
+
+The Schwartz-Zippel Lemma makes a very specific claim:  
+If the formula is \textbf{not identically zero} — that is, it's not magically zero for all possible inputs — then the chance it returns zero on a randomly chosen input is small.
+
+This is important:  
+We are not testing whether \textit{some values} make the formula zero. We are trying to test whether the formula is \textbf{always} zero. And the lemma says:  
+\begin{quote}
+If it's \textit{not} always zero, then catching it by random testing is very likely.
+\end{quote}
+
+\paragraph{Example.}  
+Suppose you have a formula of degree $d = 5$, and you pick values randomly from the set $S = \{1, 2, ..., 100\}$.
+
+Now assume this formula is \textbf{not identically zero} — there is at least one input where it evaluates to something non-zero.  
+Then the Schwartz-Zippel Lemma tells us:
+\[
+\Pr[\text{formula gives 0 at a random input}] \leq \frac{5}{100} = 5\%
+\]
+
+\paragraph{What if we test multiple times?}  
+Every time we test with a new random input, the chance that it \textit{still} returns zero shrinks. If we test $k$ times with independent random inputs, the chance it fools us every time is at most:
+\[
+\left(\frac{5}{100}\right)^k
+\]
+
+\paragraph{So even 3 repetitions gives us:}
+\[
+\left(\frac{5}{100}\right)^3 = \frac{125}{1,000,000} = 0.0125\%
+\]
+
+That’s a very small chance of being wrong — and we can make it even smaller by testing more.
+
+\medskip
+This is why the Schwartz-Zippel Lemma is so powerful. It doesn’t just give us a trick — it gives us a mathematical \textit{guarantee} on how likely we are to be misled by random testing.
+

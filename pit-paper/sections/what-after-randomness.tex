@@ -1,0 +1,39 @@
+\section{So, We Solved It? Did We?}
+
+We have a fast randomized algorithm. It’s simple, elegant, and works really well in practice. So... what’s the problem?
+
+The catch is: \textbf{we don’t have a fast, error-free (deterministic) algorithm} for Polynomial Identity Testing — not yet. And that missing piece turns out to be surprisingly important.
+
+\paragraph{Why does this matter?}
+Because this simple problem is now a \textit{benchmark} — a test case — for understanding one of the deepest open questions in computing:
+
+\begin{quote}
+\textit{Does randomness actually give us more power, or can we always remove it without losing speed?}
+\end{quote}
+
+\paragraph{What we know:}
+\begin{itemize}
+  \item Randomness helps — many problems (like checking primality) were first solved efficiently with randomized algorithms.
+  \item PIT is one of the cleanest problems that has a fast randomized solution but no known fast deterministic one.
+  \item If we can find a fast deterministic algorithm for PIT, it would mean randomness isn’t necessary \textit{even here}.
+\end{itemize}
+
+\paragraph{What’s at stake:}
+Researchers believe that derandomizing PIT would bring us closer to answering:
+\[
+\text{Is } \mathsf{P} = \mathsf{BPP}?
+\]
+(That is, can every fast randomized algorithm be converted into a fast deterministic one?)
+
+\paragraph{Why this isn’t just theory:}
+This question matters in practical computing too:
+
+\begin{itemize}
+  \item \textbf{Read-once formulas:} These are expressions where each variable is used exactly once. Researchers have found fast, deterministic ways to test these.
+  \item \textbf{Depth-3 circuits with limited operations at the top layer:} These are layered expressions where the top layer performs a small number of additions or multiplications. Deterministic testing methods have been developed for various versions of these circuits.
+  \item \textbf{Algebraic branching programs (ROABPs):} Think of these as structured, flowchart-like computations of polynomials. Again, efficient deterministic checks are now available for these models.
+\end{itemize}
+
+
+
+\paragraph{So no, we haven't fully solved it yet.} We’ve tamed the problem using randomness. But whether we can tame it without randomness remains a mystery — and one that could reshape our understanding of computation itself.

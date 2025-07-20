@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{schwartz1980fast}
+Jacob~T Schwartz.
+\newblock Fast probabilistic algorithms for verification of polynomial
+  identities.
+\newblock {\em Journal of the ACM (JACM)}, 27(4):701--717, 1980.
+
+\bibitem{zippel1979probabilistic}
+Richard Zippel.
+\newblock Probabilistic algorithms for sparse polynomials.
+\newblock In {\em International symposium on symbolic and algebraic
+  manipulation}, pages 216--226. Springer, 1979.
+
+\end{thebibliography}

@@ -1,3 +1,9 @@
 \section{Summary and Takeaways}
 
-Let’s recap the intuition we’ve built, and why this problem is more than just a math curiosity.
+Polynomial Identity Testing (PIT) asks a deceptively simple question: Does a given formula always evaluate to zero? Despite its elementary appearance, this question sits at the heart of deep complexity theory questions like whether randomness is truly necessary for efficient computation.
+
+We saw that PIT has fast randomized algorithms, made trustworthy by the Schwartz-Zippel Lemma. These algorithms use random inputs to probabilistically verify whether a formula is identically zero — with error probabilities that shrink exponentially with repetition.
+
+However, deterministic (error-free) algorithms remain elusive in the general case. Exciting progress has been made in special cases — like read-once formulas, depth-3 circuits with bounded fan-in, and algebraic branching programs — where deterministic checks are now possible.
+
+PIT is more than just a math puzzle. It’s a lens into the power of randomness, the structure of algebraic computation, and one of the most important open questions in computer science: \textbf{Can every randomized algorithm be derandomized?}

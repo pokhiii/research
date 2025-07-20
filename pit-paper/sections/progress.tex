@@ -1,0 +1,89 @@
+\section{Progress, Direction, and Current State}
+
+We've seen that the randomized algorithm for PIT is fast and surprisingly reliable. But the holy grail — a fast and fully deterministic method — remains unsolved.
+
+So, what progress \textit{have} we made?
+
+\subsection*{Derandomization Works for Special Cases}
+
+Over the years, researchers have discovered that it's possible to derandomize PIT for certain \textit{restricted} kinds of formulas.
+
+Here are a few examples:
+
+\begin{itemize}
+  \item \textbf{Read-once formulas:} Formulas where each variable appears only once. These have been shown to allow fast, deterministic testing.
+  
+  \item \textbf{Depth-3 circuits with bounded fan-in:} Think of these like layered expressions, where only a limited number of operations happen at the top layer. Progress has been made in building efficient tests for these kinds of circuits.
+  
+  \item \textbf{Algebraic branching programs (ROABPs):} These are structured ways to compute polynomials — like controlled flowcharts. Deterministic algorithms exist for testing many of these structured models.
+\end{itemize}
+
+
+
+In these special cases, deterministic algorithms \textit{do} exist — and they work efficiently.
+
+\vspace{1em}
+
+\subsection*{Wait — Where Are These Special Cases Coming From?}
+
+You might wonder: are researchers just picking random types of formulas and hoping for the best?
+
+Not quite.
+
+The strategy is deliberate: they’re breaking the big problem into smaller, manageable chunks.
+
+Here’s the intuition:
+
+\begin{itemize}
+  \item \textbf{General PIT is hard} because formulas can be written in many messy, tangled ways.
+
+  For example, take a formula like this:
+  \[
+    ((x + y)(x - y) + (x^2 - y^2)) \cdot (x + y + z) - 2xz
+  \]
+  It’s hard to see at a glance if this always gives zero — the expression has nested operations, reused sub-expressions, and no obvious simplification.
+
+  \begin{tcolorbox}[title=Wait — can Schwartz-Zippel handle messy expressions too?, colback=gray!5!white, colframe=black!75!white]
+Yes! Even if the formula looks tangled, with reused parts or no obvious simplification, Schwartz-Zippel still applies — as long as it's a polynomial.
+
+\medskip
+
+Let’s apply it to our earlier expression:
+\[
+((x + y)(x - y) + (x^2 - y^2)) \cdot (x + y + z) - 2xz
+\]
+
+\begin{itemize}
+  \item It's still a polynomial (just messy).
+  \item Its degree is at most 3.
+  \item So we can plug in random values like \(x = 1, y = 2, z = 3\) and evaluate.
+  \item If the result is ever non-zero, the formula is not identically zero.
+\end{itemize}
+
+That’s the beauty of randomized checking: you don’t have to simplify or analyze the expression manually — probability does the work!
+\end{tcolorbox}
+
+
+  \item So, computer scientists look at \textit{simpler formats} first — structured formulas, shallow depths, fewer variables, or limited operations.
+
+  For instance, a \textbf{read-once formula} like:
+  \[
+    (x + 1)(y - 2)(z + 3)
+  \]
+  is much easier to handle — every variable appears just once, and the structure is clean. Algorithms can exploit that simplicity.
+
+  Or consider a \textbf{shallow circuit} like:
+  \[
+    (x + y + z)^2
+  \]
+  This has only one layer of addition and one multiplication — very different from a deep expression with layers upon layers of nested operations.
+
+  \item The goal is to climb a ladder: solve easy versions, build tools, understand patterns — then apply those insights toward the general case.
+
+  This is like learning to factor quadratics before trying to solve fifth-degree polynomials. Each solved case sharpens our techniques — and gives clues about how the general monster might behave.
+\end{itemize}
+
+
+This is a classic move in theoretical computer science: if the mountain is too steep, build a staircase.
+
+\vspace{1em}
