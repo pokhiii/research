@@ -1,0 +1,45 @@
+\section{The Big Comeback: Deep Learning Sees the World}
+
+\subsection{The ImageNet Moment (2012)}
+
+By 2010, three things had quietly converged: larger datasets, faster GPUs, and better training techniques.
+The spark that lit the fire came in 2012.
+
+Every year, researchers competed in the \textbf{ImageNet Large Scale Visual Recognition Challenge} \cite{russakovsky2015imagenet} --- a contest to correctly classify one million images into one thousand categories.
+In 2012, a team from the University of Toronto, led by Geoffrey Hinton and his students Alex Krizhevsky and Ilya Sutskever, entered a deep neural network called \textbf{AlexNet} \cite{krizhevsky2012imagenet}.
+
+The result was staggering.
+AlexNet cut the error rate nearly in half compared to the previous year's best method.
+Nothing like this had ever happened in the competition's history.
+
+Overnight, the machine learning world shifted.
+Deep learning was no longer a niche academic interest --- it was the new state of the art.
+
+\subsection{What Made It Work: Convolutional Neural Networks}
+
+AlexNet used a special architecture called a \textbf{Convolutional Neural Network} (CNN).
+The core idea behind CNNs is that images have \emph{spatial structure}: nearby pixels are related, and patterns like edges and shapes appear in many places across an image.
+
+A standard neural network treats every pixel independently.
+A CNN, by contrast, uses small filters that slide across the image looking for local patterns --- first detecting edges, then shapes, then objects.
+Each layer builds on the last, from simple to complex.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!40!black, title=How a CNN Sees a Cat]
+\textbf{Layer 1:} Detects edges --- horizontal lines, vertical lines, diagonals. \\
+\textbf{Layer 2:} Combines edges into curves, corners, and textures. \\
+\textbf{Layer 3:} Recognizes shapes --- eyes, ears, whiskers. \\
+\textbf{Layer 4:} Assembles shapes into the concept of a ``cat.''
+\end{tcolorbox}
+
+CNNs were not entirely new --- Yann LeCun had pioneered them in the late 1980s for reading handwritten digits on cheques \cite{lecun1989backpropagation}.
+But AlexNet showed that with enough data and GPU power, they could tackle the full complexity of natural images.
+
+\subsection{The Gold Rush}
+
+The years following 2012 saw an explosion of investment and research.
+Google, Facebook, Microsoft, and Baidu all built dedicated AI research labs.
+Deep learning models rapidly surpassed human-level performance on image recognition benchmarks.
+They were applied to medical imaging, autonomous vehicles, satellite imagery, and facial recognition.
+
+The field had a tool that genuinely worked at scale.
+The question that followed naturally was: \emph{what else can we apply it to?}

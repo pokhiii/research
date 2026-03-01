@@ -1,0 +1,66 @@
+\section{The LLM Era: ChatGPT, Claude, and DeepSeek}
+
+\subsection{From Transformers to Language Models}
+
+The two years following ``Attention Is All You Need'' were a period of rapid experimentation.
+In 2018, Google introduced \textbf{BERT} (Bidirectional Encoder Representations from Transformers) \cite{devlin2018bert}, which showed that pre-training a Transformer on massive text corpora and then fine-tuning it for specific tasks outperformed every prior approach in language understanding.
+
+That same year, OpenAI introduced \textbf{GPT} (Generative Pre-trained Transformer) \cite{radford2018improving}, taking the opposite approach: instead of predicting missing words within a sentence, train a Transformer to predict the \emph{next} word, left to right, over billions of tokens of text.
+
+This is called \textbf{language modeling}: the model learns to assign probabilities to sequences of words.
+Do it at scale, and something remarkable emerges --- a model that has implicitly absorbed grammar, facts, reasoning patterns, and even style from the training data.
+
+\subsection{The Scaling Insight}
+
+GPT-2 (2019) and GPT-3 (2020) \cite{brown2020language} each scaled this approach dramatically.
+GPT-3 had 175 billion parameters --- orders of magnitude larger than anything before it.
+
+The results were qualitatively different, not just quantitatively better.
+GPT-3 could write coherent essays, answer questions, translate text, write code, and solve arithmetic problems --- all from a single model, with no task-specific fine-tuning.
+Researchers called this \textbf{emergent behavior}: capabilities that appeared at scale without being explicitly trained for.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!40!black, title=What Are Parameters?]
+Parameters are the numerical weights inside a neural network --- the millions (or billions) of numbers that get adjusted during training.
+They encode everything the model has learned.
+More parameters means more capacity to store and reason about information, though simply adding parameters without enough data and compute gains little.
+\end{tcolorbox}
+
+\subsection{ChatGPT: When the World Noticed}
+
+GPT-3 impressed researchers but was accessed through a technical API.
+The broader world had little direct contact with it.
+
+That changed in November 2022 when OpenAI released \textbf{ChatGPT}.
+
+ChatGPT was GPT-3.5 with an additional training step: \textbf{Reinforcement Learning from Human Feedback} (RLHF) \cite{ouyang2022training}.
+Human raters evaluated model responses and ranked them; a separate model learned to predict those rankings; and the language model was then fine-tuned to produce responses that the ranking model would score highly.
+
+The result was a model that felt remarkably natural to talk to.
+It remembered the conversation, acknowledged its mistakes, and declined harmful requests.
+ChatGPT reached one million users in five days.
+It remains one of the fastest product adoptions in history.
+
+\subsection{Claude}
+
+\textbf{Claude}, developed by Anthropic, followed a similar recipe but with a different emphasis.
+Anthropic was founded by former OpenAI researchers who wanted to focus more directly on AI safety.
+
+Claude incorporated a technique called \textbf{Constitutional AI} \cite{bai2022constitutional}: rather than relying solely on human raters, the model was trained using a written set of principles (a ``constitution'') that guided its own self-critique and revision of its outputs.
+This approach aimed to make the model's values more transparent and consistent.
+
+Claude has become known for producing long, nuanced, carefully reasoned responses --- and for being willing to say ``I'm not sure'' when it is not.
+
+\subsection{DeepSeek}
+
+In early 2025, a Chinese AI lab called \textbf{DeepSeek} released a model that stunned the field.
+DeepSeek-R1 \cite{deepseek2025r1} matched or exceeded the performance of models from OpenAI and Google on several reasoning benchmarks --- and did so at a fraction of the training cost.
+
+The team achieved this through several innovations, including a \textbf{Mixture of Experts} (MoE) architecture that activates only a subset of the model's parameters for any given input, and aggressive efficiency optimizations throughout training.
+
+DeepSeek made two moves that sent ripples through the industry:
+\begin{enumerate}
+    \item It released its model weights openly, so anyone could download and run the model.
+    \item It published detailed technical reports explaining how it achieved its results.
+\end{enumerate}
+
+This moment reframed the conversation about AI development: frontier performance was no longer the exclusive domain of the largest and best-funded labs.

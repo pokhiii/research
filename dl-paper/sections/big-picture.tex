@@ -1,0 +1,60 @@
+\section{Deep Learning Is Not Dead}
+
+\subsection{A Common Misconception}
+
+When ChatGPT became a cultural phenomenon, a narrative took hold in tech circles: \emph{the era of deep learning is over; we are now in the era of large language models.}
+
+This is a category error.
+
+Large language models \emph{are} deep learning.
+A Transformer is a deep neural network.
+It is trained by gradient descent with backpropagation.
+It learns by adjusting millions or billions of numerical weights based on prediction errors.
+Every concept introduced in this paper --- neurons, layers, weights, activation functions, backpropagation --- applies directly to GPT-4, Claude, and DeepSeek.
+
+LLMs are not a departure from deep learning.
+They are its current frontier.
+
+\subsection{The Larger Ecosystem}
+
+Deep learning is also very much alive outside of language.
+
+\begin{itemize}
+    \item \textbf{Computer vision} continues to advance, with models like Vision Transformers (ViT) \cite{dosovitskiy2020image} applying the Transformer architecture directly to image patches.
+    \item \textbf{Protein folding}: AlphaFold 2 \cite{jumper2021highly}, released by DeepMind in 2020, used deep learning to predict the 3D structure of proteins from their amino acid sequences --- solving a fifty-year-old biology problem.
+    \item \textbf{Generative image models}: Diffusion models, which power tools like Stable Diffusion and DALL-E, are deep neural networks trained to iteratively denoise images.
+    \item \textbf{Scientific computing}: Deep learning is being applied to weather forecasting, drug discovery, materials science, and particle physics.
+    \item \textbf{Robotics}: Neural networks now control robot arms that can assemble objects, fold laundry, and navigate unstructured environments.
+\end{itemize}
+
+The field has not narrowed --- it has expanded.
+
+\subsection{Why the Misconception Persists}
+
+Part of the confusion stems from how the public encounters AI.
+For most people, AI \emph{is} the chatbot.
+The underlying architecture is invisible.
+
+But the researchers building these systems know exactly where they are standing.
+When OpenAI trains a new model, they are doing deep learning.
+When DeepSeek builds a Mixture of Experts architecture, they are doing deep learning.
+When Anthropic fine-tunes Claude with constitutional principles, they are doing deep learning.
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!40!black, title=A Useful Analogy]
+Saying ``deep learning is dead because of LLMs'' is like saying ``electricity is dead because of smartphones.''
+
+Smartphones run on electricity.
+LLMs run on deep learning.
+
+The underlying foundation did not get replaced --- it got more powerful, more refined, and more widely deployed.
+\end{tcolorbox}
+
+\subsection{What Actually Changed}
+
+What changed after 2017 was not the paradigm --- it was the \emph{scale and the ambition}.
+
+Before Transformers, practitioners asked: \emph{What specific task can we train a model for?}
+After Transformers and scaling laws, researchers started asking: \emph{What happens if we train a single model on essentially everything?}
+
+That shift in question is what produced the LLMs we see today.
+And it happened entirely within the framework of deep learning.

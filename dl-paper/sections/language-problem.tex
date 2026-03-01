@@ -1,0 +1,60 @@
+\section{The Language Problem: Where Deep Learning Struggled}
+
+\subsection{Language is Different}
+
+Images have a neat, grid-like structure.
+Language does not.
+
+A sentence is a sequence --- each word depends on what came before it, sometimes even on what came dozens of words earlier.
+The meaning of ``bank'' in ``river bank'' is completely different from ``bank'' in ``I went to the bank.''
+Understanding language requires holding context across time, resolving ambiguity, and tracking long-range dependencies.
+
+Deep learning researchers knew this was a harder problem.
+They needed a new kind of architecture.
+
+\subsection{Recurrent Neural Networks}
+
+The first serious attempt was the \textbf{Recurrent Neural Network} (RNN).
+The key difference from a standard network: RNNs have a \emph{hidden state} --- a memory that carries information forward as the network processes a sequence one element at a time.
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!40!black, title=How an RNN Reads a Sentence]
+An RNN reads words one at a time, left to right.
+At each step, it updates its hidden state --- a fixed-size vector that is meant to summarize everything it has seen so far.
+When it reaches the end of the sentence, the hidden state is supposed to capture the full meaning.
+\end{tcolorbox}
+
+RNNs showed promise on short sequences.
+But they had a fundamental weakness: \textbf{the vanishing gradient problem}.
+
+When backpropagation runs through a long sequence, the error signal has to travel backwards through every time step.
+At each step, it gets multiplied by numbers that are often less than one.
+After fifty steps, the signal has essentially vanished.
+The network forgets what it read at the beginning of a long sentence by the time it reaches the end.
+
+\subsection{LSTMs: A Smarter Memory}
+
+In 1997, Sepp Hochreiter and Jürgen Schmidhuber introduced the \textbf{Long Short-Term Memory} (LSTM) network \cite{hochreiter1997long}.
+LSTMs added a more sophisticated memory mechanism --- explicit \emph{gates} that control what information to keep, what to forget, and what to output at each step.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!40!black, title=LSTM Gates in Plain English]
+Think of an LSTM's memory like a whiteboard with a careful editor. \\
+\textbf{Forget gate:} Decides what old information to erase. \\
+\textbf{Input gate:} Decides what new information to write. \\
+\textbf{Output gate:} Decides what to read off the board for the current step.
+\end{tcolorbox}
+
+LSTMs were a significant improvement.
+They powered many early breakthroughs in machine translation, speech recognition, and text generation throughout the 2010s.
+Google Translate switched to an LSTM-based model in 2016 \cite{wu2016google} and saw quality improvements that surprised even its own engineers.
+
+\subsection{Still, Fundamental Limits}
+
+But even LSTMs had limits.
+They processed sequences one word at a time --- which meant they could not be parallelized efficiently.
+Training on large datasets was slow.
+And the fixed-size hidden state remained a bottleneck: no matter how smart the gating mechanism, compressing an entire paragraph into a single vector loses information.
+
+Researchers experimented with different architectures: bidirectional RNNs (reading forward and backward), encoder-decoder models, attention mechanisms bolted onto RNNs \cite{bahdanau2014neural}.
+Progress was steady but incremental.
+
+The field was working hard at a difficult problem, and it was clear that a more fundamental rethinking was needed.

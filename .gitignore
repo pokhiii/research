@@ -1,9 +1,13 @@
-pit-paper/*.aux
-pit-paper/*.log
-pit-paper/*.out
-pit-paper/*.toc
-pit-paper/*.pdf
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
 *.fdb_latexmk
 *.fls
 *.log
+*.out
+*.toc
+*.pdf
+
+# macOS
 .DS_Store

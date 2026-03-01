@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage[most]{tcolorbox}
+\geometry{margin=1in}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\title{Deep Learning for Everyone}
+\author{Abhishek Pokhriyal \\
+\small\texttt{abhip099@gmail.com}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/abstract}
+
+\tableofcontents
+\newpage
+
+\input{sections/intro}
+\input{sections/timeline}
+\input{sections/vision}
+\input{sections/language-problem}
+\input{sections/attention}
+\input{sections/llm-era}
+\input{sections/big-picture}
+\input{sections/summary}
+\input{sections/ack}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

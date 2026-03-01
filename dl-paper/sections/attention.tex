@@ -1,0 +1,56 @@
+\section{2017: Attention Is All You Need}
+
+\subsection{The Paper That Changed Everything}
+
+In June 2017, a team of eight researchers at Google published a paper with a deliberately provocative title: \emph{``Attention Is All You Need''} \cite{vaswani2017attention}.
+
+The paper introduced the \textbf{Transformer} architecture.
+It dispensed entirely with recurrence --- no RNNs, no LSTMs, no processing one token at a time.
+Instead, it proposed that \emph{attention} was sufficient to model language.
+
+The results were immediate and dramatic: better performance on translation benchmarks, faster training, and a model that scaled gracefully with more data and more computation.
+
+\subsection{What is Attention?}
+
+Before Transformers, researchers had already been experimenting with attention as an add-on to RNNs \cite{bahdanau2014neural}.
+The idea: when translating a word, instead of relying on a single compressed hidden state, let the model look back at all the input words and decide which ones are most relevant right now.
+
+The Transformer took this idea and made it the entire foundation of the model.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!40!black, title=Attention in Plain English]
+Imagine you are translating the French sentence ``Le chat noir dort'' into English.
+When you are about to write the word ``black,'' your brain naturally focuses on ``noir'' --- not the whole sentence equally.
+
+Attention does the same thing mathematically.
+For each word being produced, the model computes a \emph{score} between that word and every word in the input, then uses those scores to create a weighted combination.
+High-scoring words contribute more; low-scoring words contribute less.
+\end{tcolorbox}
+
+\subsection{Self-Attention: The Key Innovation}
+
+The Transformer introduced \textbf{self-attention}: the model attends not just to an input sequence, but to its own sequence --- every word attends to every other word simultaneously.
+
+This means the model can capture long-range dependencies in a single step.
+The word ``it'' at the end of a long sentence can directly attend to the noun it refers to at the beginning, without the signal having to travel through dozens of sequential steps.
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!40!black, title=Why Self-Attention Matters]
+Consider: ``The trophy didn't fit in the suitcase because \textbf{it} was too big.''
+
+What does ``it'' refer to? The trophy or the suitcase?
+A human reader knows it's the trophy --- because if the suitcase were too big, it would have fit.
+
+Self-attention lets the model directly compare ``it'' with every other word in the sentence and learn, from training data, that ``too big'' points back to the trophy.
+An RNN has to carry this inference through sequential hidden states; self-attention resolves it in a single computation.
+\end{tcolorbox}
+
+\subsection{Parallelism: Training at Scale}
+
+The other revolution was practical.
+Because self-attention processes all positions simultaneously, Transformers are \emph{massively parallelizable}.
+Every GPU core can work on a different part of the computation at the same time.
+
+This meant that for the first time, language models could be trained on enormous datasets in reasonable time.
+Scale was no longer the enemy --- it became the strategy.
+
+Researchers quickly discovered an empirical pattern: \emph{bigger models trained on more data consistently performed better}.
+This observation, later formalized as \textbf{scaling laws} \cite{kaplan2020scaling}, would drive the next phase of the field.

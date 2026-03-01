@@ -1,0 +1,57 @@
+\section{The Early Days: Neurons, Winters, and a Long Wait}
+
+\subsection{The First Spark (1950s--1960s)}
+
+The story begins with a deceptively simple question: \emph{Can we build a machine that learns the way the brain does?}
+
+In 1943, Warren McCulloch and Walter Pitts proposed the first mathematical model of a neuron --- a simple unit that takes inputs, applies a threshold, and fires an output \cite{mcculloch1943logical}.
+In 1958, Frank Rosenblatt built on this idea to create the \textbf{Perceptron}: a single-layer model that could learn to classify inputs by adjusting numerical weights \cite{rosenblatt1958perceptron}.
+
+The excitement was immediate.
+The New York Times reported that the Navy had built a machine that could ``learn, make decisions and translate languages.''
+It felt like the dawn of thinking machines.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!40!black, title=What is a Perceptron?]
+A perceptron takes a set of numbers as input (say, pixel values of an image), multiplies each by a \emph{weight} (its importance), adds them up, and checks whether the total crosses a threshold.
+If it does, the perceptron fires a ``yes''; otherwise, a ``no.''
+Training adjusts the weights based on mistakes, nudging the model toward correct answers over time.
+\end{tcolorbox}
+
+\subsection{The First AI Winter (1970s)}
+
+The optimism did not last.
+In 1969, Marvin Minsky and Seymour Papert published \emph{Perceptrons} \cite{minsky1969perceptrons}, a mathematical analysis that showed single-layer perceptrons had fundamental limitations.
+They could not learn even simple non-linear functions like XOR.
+
+Funding dried up.
+Progress stalled.
+The field entered what is now called the \textbf{first AI winter} --- a period of disillusionment and neglect that lasted through much of the 1970s.
+
+\subsection{The Backpropagation Revival (1980s)}
+
+The thaw came in 1986.
+David Rumelhart, Geoffrey Hinton, and Ronald Williams published a landmark paper showing how to train \emph{multi-layer} networks using an algorithm called \textbf{backpropagation} \cite{rumelhart1986learning}.
+
+The key insight was elegant: if you can measure how wrong your model's output is, you can trace that error backwards through every layer of the network and adjust each weight accordingly.
+Layer by layer, from output back to input, the error signal propagates and the network learns.
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!40!black, title=Backpropagation in Plain English]
+Imagine you are trying to throw a ball into a basket from far away.
+You throw, miss, and adjust --- maybe throw a bit higher, a bit more to the left.
+Backpropagation is the mathematical version of that correction signal, applied across every connection in the network simultaneously.
+\end{tcolorbox}
+
+Multi-layer networks could now learn non-linear patterns.
+The XOR problem was no longer a barrier.
+But the field still faced practical limits: computers were too slow, datasets too small, and training deep networks took weeks even for modest tasks.
+
+\subsection{The Second AI Winter (1990s)}
+
+A second winter followed.
+Support Vector Machines and other classical techniques often outperformed neural networks on benchmark tasks, and they were far cheaper to train.
+Neural networks fell out of fashion again.
+Many researchers moved on.
+
+A small group --- Geoffrey Hinton, Yann LeCun, Yoshua Bengio, and a few others --- kept working.
+They would eventually be called the \textbf{``Godfathers of Deep Learning''} and share the Turing Award in 2018.
+But in the 1990s, they were largely swimming against the current.
