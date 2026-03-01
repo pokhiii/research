@@ -77,6 +77,51 @@ The other revolution was practical.
 Because self-attention processes all positions simultaneously, Transformers are \emph{massively parallelizable}.
 Every GPU core can work on a different part of the computation at the same time.
 
+\begin{figure}[htb]
+\centering
+\begin{tikzpicture}[>=stealth, thick]
+  % ---- LEFT: RNN sequential ----
+  \node[font=\small\bfseries] at (1.65, 1.8) {RNN (sequential)};
+  \node[rectangle, draw=red!60, fill=red!8, rounded corners=2pt,
+        minimum width=0.85cm, minimum height=0.55cm, font=\footnotesize] (r1) at (0,   0) {$w_1$};
+  \node[rectangle, draw=red!60, fill=red!8, rounded corners=2pt,
+        minimum width=0.85cm, minimum height=0.55cm, font=\footnotesize] (r2) at (1.1, 0) {$w_2$};
+  \node[rectangle, draw=red!60, fill=red!8, rounded corners=2pt,
+        minimum width=0.85cm, minimum height=0.55cm, font=\footnotesize] (r3) at (2.2, 0) {$w_3$};
+  \node[rectangle, draw=red!60, fill=red!8, rounded corners=2pt,
+        minimum width=0.85cm, minimum height=0.55cm, font=\footnotesize] (r4) at (3.3, 0) {$w_4$};
+  \draw[->, red!70] (r1) -- (r2);
+  \draw[->, red!70] (r2) -- (r3);
+  \draw[->, red!70] (r3) -- (r4);
+  \node[font=\footnotesize, text=red!70, align=center] at (1.65, -1.0)
+    {step 1 $\to$ step 2 $\to$ step 3 $\to$ step 4};
+
+  % ---- DIVIDER ----
+  \draw[dashed, gray!40, thin] (4.05, -1.6) -- (4.05, 2.1);
+
+  % ---- RIGHT: Transformer parallel ----
+  \node[font=\small\bfseries] at (6.3, 1.8) {Transformer (parallel)};
+  \node[rectangle, draw=green!60!black, fill=green!8, rounded corners=2pt,
+        minimum width=0.85cm, minimum height=0.55cm, font=\footnotesize] (t1) at (4.6, 0.85) {$w_1$};
+  \node[rectangle, draw=green!60!black, fill=green!8, rounded corners=2pt,
+        minimum width=0.85cm, minimum height=0.55cm, font=\footnotesize] (t2) at (5.5, 0.85) {$w_2$};
+  \node[rectangle, draw=green!60!black, fill=green!8, rounded corners=2pt,
+        minimum width=0.85cm, minimum height=0.55cm, font=\footnotesize] (t3) at (6.4, 0.85) {$w_3$};
+  \node[rectangle, draw=green!60!black, fill=green!8, rounded corners=2pt,
+        minimum width=0.85cm, minimum height=0.55cm, font=\footnotesize] (t4) at (7.3, 0.85) {$w_4$};
+  \node[rectangle, draw=green!60!black, fill=green!18, rounded corners=3pt,
+        minimum width=3.6cm, minimum height=0.7cm, font=\small]
+    (att) at (5.95, -0.2) {Attention};
+  \draw[->, green!60!black] (t1.south) -- (att.north -| t1);
+  \draw[->, green!60!black] (t2.south) -- (att.north -| t2);
+  \draw[->, green!60!black] (t3.south) -- (att.north -| t3);
+  \draw[->, green!60!black] (t4.south) -- (att.north -| t4);
+  \node[font=\footnotesize, text=green!50!black, align=center] at (5.95, -1.0)
+    {all 4 words at once, 1 step};
+\end{tikzpicture}
+\caption{Sequential vs.\ parallel processing. An RNN must process tokens one at a time, taking $n$ steps for a sequence of length $n$. A Transformer's self-attention computes relationships between all tokens simultaneously in a single step, enabling training on far larger datasets.}
+\end{figure}
+
 This meant that for the first time, language models could be trained on enormous datasets in reasonable time.
 Scale was no longer the enemy --- it became the strategy.
 
