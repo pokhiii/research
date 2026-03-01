@@ -43,6 +43,34 @@ Self-attention lets the model directly compare ``it'' with every other word in t
 An RNN has to carry this inference through sequential hidden states; self-attention resolves it in a single computation.
 \end{tcolorbox}
 
+\begin{figure}[htb]
+\centering
+\begin{tikzpicture}[>=stealth]
+  \def\sep{1.55}
+  % Word boxes
+  \foreach \i/\w in {0/The, 1/trophy, 2/{didn't}, 3/fit, 4/because, 5/it, 6/was, 7/too, 8/big} {
+    \node[rectangle, draw=black!70, fill=blue!8, rounded corners=2pt,
+          minimum width=1.35cm, minimum height=0.55cm, font=\footnotesize]
+      (w\i) at (\i*\sep, 0) {\w};
+  }
+  % Weak attention from "it" (w5) to other words
+  \foreach \i in {0,2,4} {
+    \draw[->, line width=0.5pt, gray!35] (w5.north) to[bend right=45] (w\i.north);
+  }
+  \foreach \i in {6,7,8} {
+    \draw[->, line width=0.5pt, gray!35] (w5.north) to[bend left=45] (w\i.north);
+  }
+  % Medium attention to "fit" (w3)
+  \draw[->, line width=2pt, blue!55] (w5.north) to[bend right=45] (w3.north);
+  % Strong attention to "trophy" (w1)
+  \draw[->, line width=4pt, blue!80] (w5.north) to[bend right=45] (w1.north);
+  % Legend
+  \node[font=\footnotesize\itshape, text=gray, align=center]
+    at (4*\sep, -1.1) {Arrow thickness $\propto$ attention weight from ``\textbf{it}''};
+\end{tikzpicture}
+\caption{Self-attention resolving a pronoun. When processing ``it,'' the model computes an attention score over every other word. Thicker arrows indicate stronger attention. The model learns to strongly attend to ``trophy'' --- the correct referent --- with no explicit grammatical rules required.}
+\end{figure}
+
 \subsection{Parallelism: Training at Scale}
 
 The other revolution was practical.

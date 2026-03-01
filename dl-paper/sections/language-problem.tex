@@ -23,6 +23,30 @@ At each step, it updates its hidden state --- a fixed-size vector that is meant 
 When it reaches the end of the sentence, the hidden state is supposed to capture the full meaning.
 \end{tcolorbox}
 
+\begin{figure}[htb]
+\centering
+\begin{tikzpicture}[
+  hbox/.style={rectangle, draw=black, fill=green!12, rounded corners=3pt,
+               minimum width=1.1cm, minimum height=0.85cm, thick, font=\small},
+  >=stealth, thick]
+  \def\s{2.8}
+  \node[hbox] (h1) at (0,    0) {$h_1$};
+  \node[hbox] (h2) at (\s,   0) {$h_2$};
+  \node[hbox] (h3) at (2*\s, 0) {$h_3$};
+  \node[hbox] (h4) at (3*\s, 0) {$h_4$};
+  \draw[->] (h1) -- (h2);
+  \draw[->] (h2) -- (h3);
+  \draw[->] (h3) -- (h4);
+  \foreach \i/\w in {1/{``The''},2/{``cat''},3/{``sat''},4/{``down''}} {
+    \node[font=\small\itshape] (x\i) at ({(\i-1)*\s}, -1.8) {\w};
+    \draw[->] (x\i) -- (h\i);
+  }
+  \node[font=\small] (out) at (3*\s, 1.6) {output};
+  \draw[->] (h4) -- (out);
+\end{tikzpicture}
+\caption{An RNN unrolled over four time steps. Each word is processed in order; the hidden state $h_t$ carries a compressed summary forward. The entire sentence's meaning must be compressed into a single vector $h_4$ --- a bottleneck that worsens as sentences grow longer.}
+\end{figure}
+
 RNNs showed promise on short sequences.
 But they had a fundamental weakness: \textbf{the vanishing gradient problem}.
 
