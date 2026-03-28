@@ -1,0 +1,66 @@
+\section{Proving It}
+
+The last three sentences of the abstract are all about results.
+They are the ``put up or shut up'' part of the paper.
+Let me take them together, because they are making the same argument from three different angles.
+
+\emph{``Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train.''}
+
+Three claims in one sentence:
+\begin{enumerate}
+    \item Better quality translations.
+    \item More parallelizable (meaning: can actually use all those GPU cores).
+    \item Faster to train.
+\end{enumerate}
+
+This is important because in machine learning, you almost always face tradeoffs.
+A model that is more accurate is usually slower.
+A model that is faster is usually worse.
+The authors are claiming they got \emph{all three} improvements simultaneously.
+That almost never happens, and when someone claims it does, you should either be very excited or very suspicious.
+
+\subsection{What Is BLEU and Why Should You Care?}
+
+\emph{``Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU.''}
+
+Two things to unpack: BLEU and WMT.
+
+\textbf{BLEU} (Bilingual Evaluation Understudy) is a score for measuring translation quality.
+The basic idea: take the machine's translation, compare it to one or more human reference translations, and count how many short phrases match.
+A perfect score is 100.
+In practice, nobody gets anywhere close to 100, because there are many valid ways to translate a sentence and BLEU only rewards you for matching the specific reference translations.
+Scores in the 25--40 range are considered quite good for difficult language pairs.
+
+\textbf{WMT} (Workshop on Machine Translation) is an annual competition --- think of it as the Olympics of machine translation.
+Researchers from around the world submit their best systems and are evaluated on standardized test sets.
+When the paper says ``WMT 2014 English-to-German,'' it is pointing to a specific, well-known benchmark that everyone in the field uses, so the comparison is apples-to-apples.
+
+Now, the paper says their model beat the previous best by ``over 2 BLEU.''
+Two points might not sound like much.
+But in the context of a mature benchmark where dozens of research groups are competing and improvements are usually measured in fractions of a point, jumping by two is enormous.
+It is like shaving a full second off the 100-meter world record.
+
+And the phrase ``including ensembles'' is doing real work here.
+An \textbf{ensemble} is when you train multiple models and combine their predictions --- it is an expensive trick that almost always improves results.
+The Transformer, as a \emph{single model}, beat systems that were using this trick.
+That is like a solo runner beating a relay team.
+
+\subsection{The Training Cost Argument}
+
+\emph{``On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.0 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature.''}
+
+This is the sentence that made engineers sit up.
+
+The previous best models took weeks or months to train.
+The Transformer hit state of the art in three and a half days on eight GPUs.
+In 2017, eight GPUs was not cheap, but it was the kind of hardware a single researcher could access.
+You did not need a data center.
+
+This matters because a model that is better \emph{and} cheaper to train is not just an incremental improvement.
+It changes who can do the research.
+It changes how fast the field can iterate.
+If your experiment takes a month, you get twelve experiments a year.
+If it takes three days, you get a hundred.
+
+The Transformer did not just beat the competition.
+It made the competition's approach economically obsolete.

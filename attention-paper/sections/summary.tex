@@ -1,0 +1,18 @@
+\section{What We Learned From Six Sentences}
+
+Let me summarize what the abstract actually told us, now that we can read it:
+
+\begin{enumerate}
+    \item Before 2017, sequence-to-sequence tasks like translation were dominated by RNN and CNN models, organized as encoder-decoders. These worked, but RNNs were slow and CNNs were bad at long-range dependencies.
+    \item The best of these models used attention as an add-on --- a way for the decoder to look back at the full input instead of relying on a single compressed vector.
+    \item The authors proposed removing everything \emph{except} attention. No recurrence. No convolutions. Just attention. They called it the Transformer.
+    \item It was better, faster to train, and more parallelizable --- all three at once.
+    \item It set new records on standard translation benchmarks, beating even ensemble models.
+    \item It did this in a fraction of the training time and cost.
+\end{enumerate}
+
+Six sentences, and the entire story is: \emph{attention was being used as a side dish; we made it the whole meal, and it turned out that was all you needed.}
+
+That is the abstract.
+
+In Part 2, we will open the paper itself and look at how the Transformer actually works --- the architecture, self-attention, multi-head attention, positional encoding, and all the machinery that makes the idea concrete.

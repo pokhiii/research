@@ -1,0 +1,38 @@
+\section{The Audacious Proposal}
+
+Sentence three: \emph{``We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.''}
+
+Read that sentence again.
+Every word is chosen carefully.
+
+\textbf{Simple.}
+They are not claiming to have built something more complicated.
+They are claiming the opposite: that their architecture is \emph{simpler} than what came before.
+In a field where progress usually means adding more moving parts, they removed parts.
+
+\textbf{Solely.}
+Not ``primarily.''
+Not ``mostly.''
+Solely.
+The Transformer uses attention and nothing else as its core mechanism.
+
+\textbf{Dispensing with recurrence and convolutions entirely.}
+This is the mic drop.
+Recurrence --- the defining feature of RNNs, the sequential one-word-at-a-time processing that the entire field was built on --- gone.
+Convolutions --- the local-window approach that was the main alternative --- also gone.
+
+To appreciate how bold this was, you have to understand that in 2017, the idea of processing sequences \emph{without} recurrence was a little like proposing that you could drive a car without wheels.
+Recurrence was how you handled sequential data.
+That was not a design choice; it was, as far as most people were concerned, a fact of nature.
+
+And yet the authors are saying: actually, no.
+If you have a powerful enough attention mechanism --- one that lets every element in the sequence look at every other element simultaneously --- you do not need to process things in order at all.
+You can look at the whole sequence at once.
+
+The name they gave it --- Transformer --- has become so ubiquitous that it is easy to forget it was a new coinage.
+GPT stands for Generative Pre-trained \emph{Transformer}.
+BERT stands for Bidirectional Encoder Representations from \emph{Transformers}.
+Every major language model since 2018 is a Transformer or a direct descendant of one.
+
+This sentence is where the paper plants its flag.
+The next three sentences are about proving that the flag was planted in the right place.

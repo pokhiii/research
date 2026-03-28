@@ -1,0 +1,36 @@
+\section{What on Earth is Sequence Transduction?}
+
+The abstract opens with: \emph{``The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder.''}
+
+There is a lot going on in that sentence, but the first thing to deal with is this phrase \emph{sequence transduction}, because if you don't know what it means, the rest of the paper is going to feel like reading a novel where you missed the first chapter.
+
+So.
+A \textbf{sequence} is just an ordered list of things.
+A sentence is a sequence of words.
+A song is a sequence of notes.
+A conversation is a sequence of utterances.
+
+\textbf{Transduction} is a fancy word for conversion.
+A microphone transduces sound into electrical signals.
+Your retina transduces light into nerve impulses.
+
+Put them together and \textbf{sequence transduction} is: you take a sequence in, you get a different sequence out.
+That is it.
+The input sequence and the output sequence need not be the same length, or in the same language, or even the same kind of thing.
+
+The canonical example is machine translation.
+English in, French out.
+But once you see the pattern, it is everywhere:
+
+\begin{itemize}
+    \item Speech recognition: audio waveform in, text out.
+    \item Summarization: a long document in, a short one out.
+    \item Chatbots: your message in, a reply out.
+\end{itemize}
+
+Now, the reason I belabor this point is that the paper says \emph{dominant} sequence transduction models.
+Dominant.
+Not ``all'' or ``the only.''
+The authors are being very specific: they are describing the state of the art in 2017, and the state of the art had converged on a particular family of approaches.
+
+Which raises the obvious question: what were those approaches, and why had everyone converged on them?

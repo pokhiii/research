@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{fit}
+\geometry{margin=1in}
+\newcommand{\circled}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt}{#1}}}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\title{Attention Is All You Need --- For Everyone\\
+\large Part 1: Dissecting the Abstract}
+\author{Abhishek Pokhriyal \\
+\small\texttt{abhip099@gmail.com}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/abstract}
+
+\tableofcontents
+\newpage
+
+\input{sections/intro}
+\input{sections/sequence-transduction}
+\input{sections/rnns-and-cnns}
+\input{sections/encoder-decoder}
+\input{sections/attention-enters}
+\input{sections/the-proposal}
+\input{sections/results}
+\input{sections/summary}
+\input{sections/ack}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
